@@ -8,7 +8,12 @@
     "orientation": "portrait",
     "ios": {
       "bundleIdentifier": "com.go4eat",
-      "supportsTablet": false
+      "supportsTablet": false,
+      "config": {
+        "googleSignIn": {
+          "reservedClientId": "com.googleusercontent.apps.516484754720-hukukm4h642gqgo8j1cjatb3tmu3ep1i"
+        }
+      }
     },
     "android": {
       "package": "com.go4eat"

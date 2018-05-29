@@ -24,7 +24,7 @@ class EventList extends Component {
   }
 
   render() {
-    return  this.props.events.length > 0 ? (
+    return this.props.events.length > 0 ? (
       <SectionList
         style={s.list}
         renderSectionHeader={({section}) => {return (

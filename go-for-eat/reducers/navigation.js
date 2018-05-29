@@ -25,6 +25,12 @@ const nav = (state = initialNavState, action) => {
       state
     );
     break;
+  case 'LOGIN_USER_FAILURE':
+    nextState = AppNavigator.router.getStateForAction(
+      NavigationActions.navigate({ routeName: 'Login' }),
+      state
+    );
+    break;
   case 'NAVIGATE':
     nextState = AppNavigator.router.getStateForAction(
       NavigationActions.navigate({ routeName: action.screen }),

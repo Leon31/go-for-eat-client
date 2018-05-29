@@ -10,7 +10,9 @@ import Profile from '../screens/Profile/Profile';
 import { CreateEvent } from '../screens/CreateEvent';
 import { EditEvent } from '../screens/EditEvent';
 import LoadingPage from '../screens/LoadingPage';
+import Splash from '../screens/Splash';
 import { Rating } from '../screens/Rating';
+import Filter from '../screens/Filter/Filter';
 
 const NavigatorWithRootScreen = (routeName, screen) => {
   return StackNavigator({
@@ -49,8 +51,11 @@ const HomeStack = StackNavigator({
   Rating: {
     screen: NavigatorWithRootScreen('Rating', Rating),
     navigationOptions:{header:() => null}
+  },
+  Filter: {
+    screen: NavigatorWithRootScreen('Filter', Filter),
+    navigationOptions:{header:() => null}
   }
-
 },
 {
   mode: 'modal',
@@ -59,12 +64,16 @@ const HomeStack = StackNavigator({
 );
 
 export const AppNavigator = StackNavigator({
-  Loading:{
-    screen:LoadingPage,
+  Splash:{
+    screen: Splash,
     navigationOptions:{header:()=>null}
   },
   Login: {
     screen: Login,
+    navigationOptions:{header:()=>null}
+  },
+  Loading:{
+    screen:LoadingPage,
     navigationOptions:{header:()=>null}
   },
   HomeStack: {

@@ -22,7 +22,7 @@ class Profile extends Component {
 
   render() {
     if ((!this.props.user )|(!this.props.events)) return null;
-    console.log(this.props.events);
+
     return (
       <ScrollView>
         <UserBio user={this.props.user}/>

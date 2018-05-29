@@ -1,47 +1,16 @@
 import React, { Component } from 'react';
 import { Text, View, Animated, Image, Easing } from 'react-native';
-import { connect } from 'react-redux';
 import s from './styles';
-import { setUser, setEntities, navigate, reloadUser } from '../../actions';
 
 class LoadingPage extends Component {
-  constructor (props) {
-    super(props);
+  constructor () {
+    super();
     this.spinValue = new Animated.Value(0);
   }
 
-  componentDidMount = async () => {
+  componentDidMount () {
     this.spin();
-    await navigator.geolocation.getCurrentPosition(
-      async (position) => {
-        await this.setState({
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        });
-        await this.loginExpo();
-      }
-    );
   }
-
-  loginExpo = () => {
-    Expo.SecureStore.getItemAsync('state')
-      .then(userData => {
-        if (userData) {
-          let user = JSON.parse(userData).authentication;
-          let entities = JSON.parse(userData).entities;
-          if (entities) this.props.setEntities(entities);
-          if (user.user._id) {
-            this.props.setUser(user);
-            this.props.reloadUser(this.state);
-            this.props.navigate('Home');
-          }
-          else {
-            this.props.navigate('Login');
-          }
-        }
-      });
-  }
-
   spin () {
     this.spinValue.setValue(0);
     Animated.timing(
@@ -71,16 +40,4 @@ class LoadingPage extends Component {
   }
 }
 
-
-const mapStateToProps = (state) => ({
-  user:state.authentication
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  setUser: user => dispatch(setUser(user)),
-  navigate: (screen) => dispatch(navigate(screen)),
-  setEntities: (data) => dispatch(setEntities(data)),
-  reloadUser: (data) => dispatch(reloadUser(data)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(LoadingPage);
+export default LoadingPage;

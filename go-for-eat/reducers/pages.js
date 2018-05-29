@@ -104,7 +104,7 @@ const pages = (state = defaultState, action) => {
 
       }
     };
-  case 'UPDATE_QUERY_STATE':
+    case 'UPDATE_QUERY_STATE':
     const newQuery = Object.assign(state.Maps.query, action.newQuery);
     return {
       ...state,
@@ -113,32 +113,33 @@ const pages = (state = defaultState, action) => {
         query:{
           ...newQuery
         },
+        events: [],
+      },
+      Home:{
+        ...state.Home,
+        events: [],
+      }
+    };
+    case 'GET_EVENTS_SUCCESS':
+    const eventIds = action.response.result;
+    const title = action.response.entities.events[eventIds[0]].when;
+    const originalEvents = action.distFetch ? [] : state.Home.events;
+    return {
+      ...state,
+      Home: {
+        ...state.Home,
+        events: [
+          ...originalEvents,
+          { title, data: eventIds }
+        ],
+      },
+      Maps: {
+        ...state.Maps,
+        events: [
+          ...new Set(state.Maps.events.concat(...eventIds))
+        ],
       },
     };
-  case 'GET_EVENTS_SUCCESS':
-    if (action.response.entities.events) {
-      const eventIds = action.response.result;
-      if(eventIds.length === 0) return state;
-      const title = action.response.entities.events[eventIds[0]].when;
-      const originalEvents = action.distFetch ? [] : state.Home.events;
-      return {
-        ...state,
-        Home: {
-          ...state.Home,
-          events: [
-            ...originalEvents,
-            { title, data: eventIds }
-          ],
-        },
-        Maps: {
-          ...state.Maps,
-          events: [
-            ...new Set(state.Maps.events.concat(...eventIds))
-          ],
-        },
-      };
-    }
-    else return state;
   case 'SET_MAIN_EVENT':
     if (action.id) {
       return {
@@ -161,15 +162,15 @@ const pages = (state = defaultState, action) => {
       }
     };
     break;
-  case 'DELETE_EVENTS_SUCCESS':
-    delete state.Home.events[action.eventId];
-    return {
-      ...state,
-      events: {
-        ...state.events,
-      }
-    };
-    break;
+  // case 'DELETE_EVENTS_SUCCESS':
+  //   delete state.Home.events[action.eventId];
+  //   return {
+  //     ...state,
+  //     events: {
+  //       ...state.events,
+  //     }
+  //   };
+  //   break;
   case 'TOGGLE_DETAILS':
     return {
       ...state,

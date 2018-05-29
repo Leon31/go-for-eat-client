@@ -12,6 +12,7 @@ import navBack from '../../assets/icons/nav_back.png';
 import navProfile from '../../assets/icons/nav_profile.png';
 import navLogout from '../../assets/icons/nav_logout.png';
 import navClose from '../../assets/icons/nav_close.png';
+import navCheck from '../../assets/icons/nav_check.png';
 import logo from '../../assets/logo/logo2x.png';
 import style from './styles.js';
 import PropTypes from 'prop-types';
@@ -119,7 +120,7 @@ class NavBar extends Component {
         onPress:this.handleLogout,
         icon:navLogout,
         style: style.logout,
-      }
+      },
     };
 
     const buttons = {};
@@ -136,6 +137,7 @@ class NavBar extends Component {
     if (this.state.screen === 'Home') {
       buttons.left = this.renderButton(allButtons.create);
       buttons.right = this.renderButton(allButtons.profile);
+      // buttons.left = this.renderButton(allButtons.filter);
     } else if (this.state.screen === 'Profile') {
       buttons.left = this.renderButton(allButtons.close);
       buttons.right = this.renderButton(allButtons.logout);
@@ -149,6 +151,9 @@ class NavBar extends Component {
       buttons.left = this.renderButton(allButtons.close);
       buttons.right = null;
     } else if (this.state.screen === 'Rating') {
+      buttons.left = this.renderButton(allButtons.close);
+      buttons.right = null;
+    } else if (this.state.screen === 'Filter') {
       buttons.left = this.renderButton(allButtons.close);
       buttons.right = null;
     } else {

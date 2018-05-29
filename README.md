@@ -66,3 +66,9 @@ Sergi Palau – [Linkedin](https://www.linkedin.com/in/leonardo-di-vittorio-0926
 Hannah Redler – [Linkedin](https://www.linkedin.com/in/leonardo-di-vittorio-092679a6/) – [GitHub](https://github.com/redspanner) - hannahjredler@gmail.com
 
 Leonardo Di Vittorio – [Linkedin](https://www.linkedin.com/in/leonardo-di-vittorio-092679a6/) – [GitHub](https://github.com/Leon31)-leodivittorio@gmail.com
+
+## Contributors
+Necati Ozmen – [Linkedin](https://www.linkedin.com/in/necatiozmen/) – [GitHub](https://github.com/necatiozmen)-necatiozmn@gmail.com
+
+Goran Plavsic – [Linkedin](www.linkedin.com/in/gplavsic/) – [GitHub](https://github.com/g0g11)-goran.plavsic@gmail.com
+

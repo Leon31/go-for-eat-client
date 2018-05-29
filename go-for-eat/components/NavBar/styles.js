@@ -54,4 +54,9 @@ export default StyleSheet.create({
     height: 22,
     width: 28,
   },
+  check: {
+    paddingBottom: 5,
+    height: 20,
+    width: 20,
+  },
 });
